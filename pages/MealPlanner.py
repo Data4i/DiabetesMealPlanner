@@ -29,7 +29,7 @@ else:
 
     with center_col:
         pred = model.predict(model_info)
-        st.success(f"{"It is highly likely you are diabetes free" if pred==0 else "It is highly likely you have diabetes"}")
+        st.success(f"{'It is highly likely you are diabetes free' if pred==0 else 'It is highly likely you have diabetes'}")
         
         st.header("Weekly Meal PLan")
         

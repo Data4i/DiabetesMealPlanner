@@ -17,7 +17,7 @@ if 'model_info' not in st.session_state:
 else:
     model_info = st.session_state['model_info']
 
-    model_filename = "models/best_model.pkl"
+    model_filename = "../models/best_model.pkl"
 
     @st.cache_resource
     def get_model(model_filename:str):

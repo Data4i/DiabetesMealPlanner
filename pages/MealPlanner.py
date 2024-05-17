@@ -3,7 +3,6 @@ import pickle
 import os 
 import streamlit as st
 import google.generativeai as genai
-from IPython.display import display
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/data4i0/Downloads/adubsproject-fdc98a6b3ae0.json"
 
@@ -17,7 +16,7 @@ if 'model_info' not in st.session_state:
 else:
     model_info = st.session_state['model_info']
 
-    model_filename = "../models/best_model.pkl"
+    model_filename = "models/best_model.pkl"
 
     @st.cache_resource
     def get_model(model_filename:str):

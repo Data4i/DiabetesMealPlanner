@@ -1,7 +1,12 @@
 streamlit
 pandas 
 numpy 
-# google.generative
+google-generativeai
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+
+
 # os
 # pickle
 ipython

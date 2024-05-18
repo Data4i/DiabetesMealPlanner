@@ -23,7 +23,13 @@ model_filename = "modelx/best_model.pkl"
 
 @st.cache_resource
 def get_model(model_filename:str):
-    model = pickle.load(open(model_filename, 'rb'))
+    current_directory = os.path.dirname(__file__)
+    model_path = os.path.join(current_directory, model_filename)
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model file not fount: {model_path}")
+    
+    with open(model_path, "rb") as file:
+        model = pickle.load(file)
     return model
 
 model = get_model(model_filename)

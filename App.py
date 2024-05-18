@@ -23,7 +23,9 @@ model_filename = "models/best_model.pkl"
 
 @st.cache_resource
 def get_model(model_filename:str):
-    model = pickle.load(open(model_filename, 'rb'))
+    with open(model_filename, "rb") as f:
+        model = pickle.load(f)
+    # model = pickle.load(open(model_filename, 'rb'))
     return model
 
 model = get_model(model_filename)

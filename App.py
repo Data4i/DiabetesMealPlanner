@@ -19,12 +19,12 @@ with center_col:
 df_filename = "data/diabetes.csv"
 
 
-model_filename = "best_model"
+model_filename = "best_model.joblib"
 
 @st.cache_resource
 def get_model(model_filename:str):
     with open(model_filename, "rb") as f:
-        model = pickle.load(f)
+        model = joblib.load(f)
     # model = pickle.load(open(model_filename, 'rb'))
     return model
 

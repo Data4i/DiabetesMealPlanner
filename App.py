@@ -19,7 +19,7 @@ with center_col:
 df_filename = "data/diabetes.csv"
 
 
-model_filename = "best_model.pkl"
+model_filename = "best_model"
 
 @st.cache_resource
 def get_model(model_filename:str):

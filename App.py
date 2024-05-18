@@ -18,6 +18,16 @@ with center_col:
 
 df_filename = "data/diabetes.csv"
 
+
+model_filename = "models/best_model.pkl"
+
+@st.cache_resource
+def get_model(model_filename:str):
+    model = pickle.load(open(model_filename, 'rb'))
+    return model
+
+model = get_model(model_filename)
+
 @st.cache_data
 def get_used_df(df_filename):
     return pd.read_csv(df_filename)
@@ -52,10 +62,16 @@ if button:
     
     st.session_state['model_info'] = model_prediction_info_df
     
-    model_prediction_infos['vegetarian'] = vegetarian
+    pred = model.predict(model_prediction_info_df)
+    
+    st.session_state['prediction'] = pred
+    
+    st.session_state['isvegetarian'] = vegetarian
+    
+    # model_prediction_infos['vegetarian'] = vegetarian
 
-    if 'planner_infos' not in st.session_state:
-        st.session_state['planner_infos'] = model_prediction_infos
+    # if 'planner_infos' not in st.session_state:
+    #     st.session_state['planner_infos'] = model_prediction_infos
         
     st.switch_page('pages/MealPlanner.py')    
     

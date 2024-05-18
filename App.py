@@ -19,29 +19,16 @@ with center_col:
 df_filename = "data/diabetes.csv"
 
 
-model_filename_pickle = "models/best_model.pkl"
-model_filename_joblib = "models/best_model.joblib"
-model_filename_normal = "models/best_model"
-
+model_filename = "models/best_model.joblib"
 
 @st.cache_resource
-def get_model(model_filename_pickle:str,
-            model_filename_joblib:str,
-            model_filename_normal:str):
-    try:
-        with open(model_filename_pickle, "rb") as f:
-            model = pickle.load(f)
-    except FileNotFoundError:
-        try:
-            with open(model_filename_joblib, "rb") as f:
-                model = joblib.load(f)
-        except FileNotFoundError:
-            with open(model_filename_normal, "rb") as f:
-                model = pickle.load(f)
+def get_model(model_filename:str):
+    with open(model_filename, "rb") as f:
+        model = joblib.load(f)
     # model = pickle.load(open(model_filename, 'rb'))
     return model
 
-model = get_model(model_filename_pickle, model_filename_joblib, model_filename_normal)
+model = get_model(model_filename)
 
 @st.cache_data
 def get_used_df(df_filename):

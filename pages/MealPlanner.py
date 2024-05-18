@@ -1,6 +1,5 @@
 import streamlit as st
 import pickle
-import joblib
 import os 
 import streamlit as st
 import google.generativeai as genai

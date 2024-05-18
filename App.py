@@ -19,7 +19,7 @@ with center_col:
 df_filename = "data/diabetes.csv"
 
 
-model_filename = "models/best_model.pkl"
+model_filename = "models/model.pkl"
 
 @st.cache_resource
 def get_model(model_filename:str):
@@ -29,7 +29,7 @@ def get_model(model_filename:str):
         raise FileNotFoundError(f"Model file not found: {model_path}")
     
     with open(model_path, "rb") as file:
-        model = pickle.load(file)
+        model = pd.read_pickle(file)
     return model
 
 model = get_model(model_filename)

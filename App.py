@@ -19,14 +19,14 @@ with center_col:
 df_filename = "data/diabetes.csv"
 
 
-model_filename = "modelx/best_model.pkl"
+model_filename = "models/best_model.pkl"
 
 @st.cache_resource
 def get_model(model_filename:str):
     current_directory = os.path.dirname(__file__)
     model_path = os.path.join(current_directory, model_filename)
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Model file not fount: {model_path}")
+        raise FileNotFoundError(f"Model file not found: {model_path}")
     
     with open(model_path, "rb") as file:
         model = pickle.load(file)

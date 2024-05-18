@@ -29,7 +29,7 @@ def get_model(model_filename:str):
         raise FileNotFoundError(f"Model file not found: {model_path}")
     
     with open(model_path, "rb") as file:
-        model = pd.read_pickle(file)
+        model = pickle.load(file)
     return model
 
 model = get_model(model_filename)
